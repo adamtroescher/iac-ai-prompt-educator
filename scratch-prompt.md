@@ -1,3 +1,5 @@
+Create a plan for a haiku agent to create the below specified tool and store it in /tasks under a unique directory that you create for this task. 
+
 # Goal
 
 Hello! Using python. I would like to create a terraform infrastructure as code prompt engineering training program. The tool should act like an educator that evaluates the responses back from claude and grades them against a base set of criteria. Supplemental criteria can also be added by the user as markdown files.
@@ -58,19 +60,25 @@ These are for azure resources created in a secure enterprise tenant.
 ## Example interactions
 
 <prompt 1>
-Prompt: do an azure storage account
+Prompt: do a storage account
 Score: low
-Suggestions: What type of azure storage account? LRS or GRS?
+Suggestions: What type of azure storage account? LRS or GRS?, what cloud provider?
 </prompt 1>
 
 <prompt 2>
 Prompt: create three azure storage accounts, no global replication is needed, define all three in a locals block for an iterator
 Score: medium
-Suggestions: What type of azure storage account? LRS or GRS?
+Suggestions: what sort of defaults should be specified, any variable validation
 </prompt 2>
 
 <prompt 3>
 Prompt: Create three azure storage accounts. No global replication is needed so use LRS. Define all three in a locals block for an iterator. Specify reasonable default variables for the inputs and only override what is needed through the locals block. When a user specified value is expected add checks and conditionals to verify the input matches the naming standard that starts with azstor
 Score: high
-Suggestions: What type of azure storage account? LRS or GRS?
+Suggestions: What about security and RBAC as well as the keys
 </prompt 3>
+
+<prompt 4>
+Prompt: Create three azure storage accounts. No global replication is needed so use LRS. Define all three in a locals block for an iterator. Specify reasonable default variables for the inputs and only override what is needed through the locals block. When a user specified value is expected add checks and conditionals to verify the input matches the naming standard that starts with azstor. Key based access should be disabled. A user managed identity should be created to support OIDC connection with the required federated credentials from the AKS cluster dev-env in the namespace test-for-echo. The team admin group test-for-echo-admins should be added as a contributor on the managed identity and storage account. 
+Score: highest
+Suggestions: None
+</prompt 4>
